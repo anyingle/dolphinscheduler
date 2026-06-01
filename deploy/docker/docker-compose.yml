@@ -13,6 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# cd D:\Code\dolphinscheduler\deploy\docker   docker-compose --profile all up -d
 
 version: "3.8"
 
@@ -129,8 +130,6 @@ services:
     image: ${HUB}/dolphinscheduler-worker:${TAG}
     profiles: ["all"]
     env_file: .env
-    environment:
-      WORKER_TENANT_CONFIG_DEFAULT_TENANT_ENABLED: "true"
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:1235/actuator/health" ]
       interval: 30s
