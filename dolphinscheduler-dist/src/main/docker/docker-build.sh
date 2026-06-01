@@ -17,8 +17,8 @@
 #
 set -xeo pipefail
 
-DOCKER_HUB=$1
-DOCKER_TAG=$2
+DOCKER_HUB=2
+DOCKER_TAG=2
 DOCKER_REPO_BASE=dolphinscheduler
 
 CURRENT_HOME=$(dirname $(readlink -f "$0"))
