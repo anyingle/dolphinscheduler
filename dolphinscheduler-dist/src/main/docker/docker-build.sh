@@ -23,9 +23,16 @@ DOCKER_REPO_BASE=dolphinscheduler
 
 CURRENT_HOME=$(dirname $(readlink -f "$0"))
 
-docker buildx build --load --no-cache -t $DOCKER_HUB/$DOCKER_REPO_BASE-api:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-api:latest -f ${CURRENT_HOME}/api-server.dockerfile .
-docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-master:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-master:latest -f ${CURRENT_HOME}/master-server.dockerfile .
-docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-worker:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-worker:latest -f ${CURRENT_HOME}/worker-server.dockerfile .
-docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-alert-server:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-alert-server:latest -f ${CURRENT_HOME}/alert-server.dockerfile .
-docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-standalone-server:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-standalone-server:latest -f ${CURRENT_HOME}/standalone-server.dockerfile .
-docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-tools:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-tools:latest -f ${CURRENT_HOME}/tools.dockerfile .
+#docker buildx build --load --no-cache -t $DOCKER_HUB/$DOCKER_REPO_BASE-api:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-api:latest -f ${CURRENT_HOME}/api-server.dockerfile .
+#docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-master:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-master:latest -f ${CURRENT_HOME}/master-server.dockerfile .
+#docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-worker:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-worker:latest -f ${CURRENT_HOME}/worker-server.dockerfile .
+#docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-alert-server:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-alert-server:latest -f ${CURRENT_HOME}/alert-server.dockerfile .
+#docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-standalone-server:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-standalone-server:latest -f ${CURRENT_HOME}/standalone-server.dockerfile .
+#docker buildx build --load -t $DOCKER_HUB/$DOCKER_REPO_BASE-tools:$DOCKER_TAG -t $DOCKER_HUB/$DOCKER_REPO_BASE-tools:latest -f ${CURRENT_HOME}/tools.dockerfile .
+
+
+# cd D:\Code\dolphinscheduler\
+docker build -t apache2/dolphinscheduler-api:dev2 -f dolphinscheduler-dist/src/main/docker/api-server.dockerfile dolphinscheduler-dist
+docker build -t apache2/dolphinscheduler-master:dev2 -f dolphinscheduler-dist/src/main/docker/master-server.dockerfile dolphinscheduler-dist
+docker build -t apache2/dolphinscheduler-worker:dev2 -f dolphinscheduler-dist/src/main/docker/worker-server.dockerfile dolphinscheduler-dist
+docker build -t apache2/dolphinscheduler-alert-server:dev2 -f dolphinscheduler-dist/src/main/docker/alert-server.dockerfile dolphinscheduler-dist

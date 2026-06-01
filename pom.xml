@@ -42,7 +42,7 @@
         <module>dolphinscheduler-api</module>
         <module>dolphinscheduler-yarn-aop</module>
         <module>dolphinscheduler-dao</module>
-        <!--        <module>dolphinscheduler-dist</module>-->
+        <module>dolphinscheduler-dist</module>
         <module>dolphinscheduler-service</module>
         <module>dolphinscheduler-microbench</module>
         <module>dolphinscheduler-standalone-server</module>
