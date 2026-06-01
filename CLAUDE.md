@@ -6,6 +6,10 @@ Apache DolphinScheduler is a distributed, visual DAG workflow-scheduling platfor
 
 ---
 
+## 关于我的问题
+我本地起的docker desktop, 然后部署通过dist服务打包部署的
+我反馈的问题优先去看docker运行日志, 然后再看代码
+
 ## Tech stack (project-wide)
 
 - **Java 1.8** (do not assume 11+ APIs; `dolphinscheduler-api-test` is the only Java 11 island).
