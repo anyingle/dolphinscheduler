@@ -129,6 +129,8 @@ services:
     image: ${HUB}/dolphinscheduler-worker:${TAG}
     profiles: ["all"]
     env_file: .env
+    environment:
+      WORKER_TENANT_CONFIG_DEFAULT_TENANT_ENABLED: "true"
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:1235/actuator/health" ]
       interval: 30s
