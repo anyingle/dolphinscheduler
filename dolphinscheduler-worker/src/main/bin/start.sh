@@ -61,8 +61,9 @@ task-plugins
 
 for plugin in ${PLUGINS_PATH[@]}; do
   if [ -d "$DOLPHINSCHEDULER_HOME/plugins/$plugin" ]; then
-    CP=$CP:"$DOLPHINSCHEDULER_HOME/plugins/$plugin/*"
-  fi
+    for jar in $(find "$DOLPHINSCHEDULER_HOME/plugins/$plugin" -name "*.jar" 2>/dev/null); do
+      CP=$CP:"$jar"
+    done  fi
 done
 
 $JAVA_HOME/bin/java $JAVA_OPTS \
