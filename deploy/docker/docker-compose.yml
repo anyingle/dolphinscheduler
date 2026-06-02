@@ -13,7 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# cd D:\Code\dolphinscheduler\deploy\docker   docker-compose --profile all up -d
+# 部署顺序倒序: docker-compose执行run启动各个镜像, docker build讲各个镜像打包, dist服务打包, api master .. 服务打包, 修改的插件或服务打包
+# cd deploy\docker   docker-compose --profile all up -d
 
 version: "3.8"
 

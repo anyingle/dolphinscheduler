@@ -7,8 +7,11 @@ Apache DolphinScheduler is a distributed, visual DAG workflow-scheduling platfor
 ---
 
 ## 关于我的问题
-我本地起的docker desktop, 然后部署通过dist服务打包部署的
-我反馈的问题优先去看docker运行日志, 然后再看代码
+我本地起的docker desktop, 我是windows系统本地也有wsl  
+代码是在wsl拉取的因为有很多shell文件, windows拉取会有编码问题  
+部署通过dist服务打包, 然后手动执行了docker build  
+运行通过deploy里的docker-compose.yaml启动  
+我如果反馈的是功能问题就优先去看docker运行日志, 然后再看代码
 
 ## Tech stack (project-wide)
 
