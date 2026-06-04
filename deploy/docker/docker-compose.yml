@@ -55,7 +55,7 @@ services:
       - dolphinscheduler
 
   spark:
-    image: bitnamilegacy/spark:3.5.0
+    image: apache/spark:3.5.0-scala2.12-java11-python3-ubuntu
     profiles: ["all"]
     container_name: spark-standalone
     environment:
