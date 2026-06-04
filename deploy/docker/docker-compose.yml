@@ -21,7 +21,6 @@ version: "3.8"
 services:
   dolphinscheduler-postgresql:
     image: bitnamilegacy/postgresql:15.2.0-debian-11-r9
-
     ports:
       - "5432:5432"
     profiles: ["all", "schema"]
@@ -52,6 +51,18 @@ services:
       interval: 5s
       timeout: 60s
       retries: 120
+    networks:
+      - dolphinscheduler
+
+  spark:
+    image: bitnamilegacy/spark:3.5.0
+    profiles: ["all"]
+    container_name: spark-standalone
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
     networks:
       - dolphinscheduler
 
@@ -147,15 +158,6 @@ services:
       - D:\Code\apache-seatunnel-2.3.13:/opt/soft/seatunnel  # https://www.apache.org/dyn/closer.lua/seatunnel/2.3.13/apache-seatunnel-2.3.13-bin.tar.gz
     networks:
       - dolphinscheduler
-
-  spark:
-    image: bitnami/spark:3.5.0
-    container_name: spark-standalone
-    environment:
-      - SPARK_MODE=master
-    ports:
-      - "8080:8080"
-      - "7077:7077"
 
 networks:
   dolphinscheduler:
