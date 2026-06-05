@@ -70,6 +70,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+    volumes:
+      - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
     networks:
       - dolphinscheduler
 
@@ -87,6 +89,8 @@ services:
     command: ["/opt/entrypoint.sh", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
     ports:
       - "8081:8081"   # Worker Web UI
+    volumes:
+      - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
     networks:
       - dolphinscheduler
 
