@@ -54,15 +54,39 @@ services:
     networks:
       - dolphinscheduler
 
-  spark:
+  spark-master:
     image: apache/spark:3.5.0-scala2.12-java11-python3-ubuntu
     profiles: ["all"]
-    container_name: spark-standalone
+    container_name: spark-master
+    hostname: spark-master
     environment:
-      - SPARK_MODE=master
+      - SPARK_NO_DAEMONIZE=true
+    command: ["/opt/entrypoint.sh", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
     ports:
-      - "8080:8080"
-      - "7077:7077"
+      - "8080:8080"   # Master Web UI
+      - "7077:7077"   # Spark Master
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - dolphinscheduler
+
+  spark-worker:
+    image: apache/spark:3.5.0-scala2.12-java11-python3-ubuntu
+    profiles: ["all"]
+    container_name: spark-worker
+    hostname: spark-worker
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    environment:
+      - SPARK_NO_DAEMONIZE=true
+      - SPARK_MASTER_HOST=spark-master
+    command: ["/opt/entrypoint.sh", "/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "spark://spark-master:7077"]
+    ports:
+      - "8081:8081"   # Worker Web UI
     networks:
       - dolphinscheduler
 
