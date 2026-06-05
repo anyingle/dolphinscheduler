@@ -72,8 +72,11 @@ services:
       retries: 10
     volumes:
       - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
+      - D:\Code\datalake-etl\spark:/tmp/script
     networks:
       - dolphinscheduler
+    extra_hosts:
+      - "mysql-server:192.168.8.203"
 
   spark-worker:
     image: apache/spark:3.5.0-scala2.12-java11-python3-ubuntu
@@ -93,6 +96,8 @@ services:
       - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
     networks:
       - dolphinscheduler
+    extra_hosts:
+      - "mysql-server:192.168.8.203"
 
   dolphinscheduler-schema-initializer:
     image: ${HUB}/dolphinscheduler-tools:${TAG}
