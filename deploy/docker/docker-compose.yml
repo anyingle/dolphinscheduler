@@ -188,7 +188,8 @@ services:
       - dolphinscheduler-logs:/opt/dolphinscheduler/logs
       - dolphinscheduler-shared-local:/opt/soft
       - dolphinscheduler-resource-local:/dolphinscheduler
-      - D:\Code\apache-seatunnel-2.3.13:/opt/soft/seatunnel  # https://www.apache.org/dyn/closer.lua/seatunnel/2.3.13/apache-seatunnel-2.3.13-bin.tar.gz
+      - D:\Code\apache-seatunnel-2.3.13:/opt/soft/seatunnel  # https://www.apache.org/dyn/closer.lua/seatunnel/2.3.13/apache-seatunnel-2.3.13-bin.tar.gz 需要在lab里放需要的jar
+      - D:\Code\spark-3.5.0-bin-hadoop3:/opt/soft/spark  # https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz 需要在jars里放需要的jar
     networks:
       - dolphinscheduler
 
