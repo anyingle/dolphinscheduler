@@ -71,7 +71,7 @@ services:
       timeout: 5s
       retries: 10
     volumes:
-      - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
+      - D:\Code\spark-3.5.0-bin-hadoop3\jars:/opt/spark/jars
       - D:\Code\datalake-etl\spark:/tmp/script
     networks:
       - dolphinscheduler
@@ -93,7 +93,7 @@ services:
     ports:
       - "8081:8081"   # Worker Web UI
     volumes:
-      - D:\Code\apache-seatunnel-2.3.13\lib\mysql-connector-j-8.0.33.jar:/opt/spark/jars/mysql-connector-j-8.0.33.jar
+      - D:\Code\spark-3.5.0-bin-hadoop3\jars:/opt/spark/jars
     networks:
       - dolphinscheduler
     extra_hosts:
